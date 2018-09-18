@@ -1,0 +1,49 @@
+---
+title: "Figure 1C"
+author: "Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Figure 1C}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Goal of this vignette is to re-create figure 1C.
+
+# Setup
+
+```{r}
+library(huisweis)
+```
+
+# Constants
+
+
+```{r}
+n_species <- 6
+n_resources <- 3
+```
+
+Half-saturation constants for resources:
+
+```{r}
+hsrs <- create_hsrs_1_c()
+knitr::kable(hsrs)
+```
+
+Species resource contents:
+
+```{r}
+srcs <- create_srcs_1_c()
+knitr::kable(srcs)
+```
+
+```{r}
+supply_rates <- c(6, 10, 15)
+species_densities <- create_init_spec_densities(n_species = n_species)
+max_growth_rates <- rep(1.0, n_species)
+#resource_densities,
+mortality_rates <- rep(0.25, n_species)
+#turnover_rate <- 0.25
+```
