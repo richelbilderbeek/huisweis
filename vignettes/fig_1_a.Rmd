@@ -1,10 +1,10 @@
 ---
-title: "Figure 1C"
+title: "Figure 1A"
 author: "Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::pdf_document
 vignette: >
-  %\VignetteIndexEntry{Figure 1C}
+  %\VignetteIndexEntry{Figure 1A}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -22,21 +22,21 @@ library(huisweis)
 
 
 ```{r}
-n_species <- 6
+n_species <- 3
 n_resources <- 3
 ```
 
 Half-saturation constants for resources:
 
 ```{r}
-hsrs <- create_hsrs_1_c()
+hsrs <- create_hsrs_1_a()
 knitr::kable(hsrs)
 ```
 
 Species resource contents:
 
 ```{r}
-srcs <- create_srcs_1_c()
+srcs <- create_srcs_1_a()
 knitr::kable(srcs)
 ```
 
