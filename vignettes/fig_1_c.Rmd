@@ -52,7 +52,7 @@ mortality_rates <- get_mortality_rates(n_species = n_species)
 print(mortality_rates)
 turnover_rate <- get_turnover_rate()
 print(turnover_rate)
-t_max <- 10
+t_max <- 100
 print(t_max)
 dt <- 0.01
 print(dt)
