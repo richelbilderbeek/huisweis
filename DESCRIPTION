@@ -6,7 +6,7 @@ Author: Richel J.C. Bilderbek
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: This package reproduces the research by Huisman and
     Weissing, done in 1999. The vignettes allow anyone to
-    experiment with the values
+    experiment with the values.
 License: GPL-3 | file LICENSE
 Imports: testit
 Encoding: UTF-8
