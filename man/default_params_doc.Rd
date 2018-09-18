@@ -5,8 +5,9 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(hsr, hsrs, max_growth_rate, n_species, n_resources,
-  resource_densities)
+default_params_doc(hsr, hsrs, max_growth_rate, max_growth_rates,
+  mortality_rates, n_species, n_resources, resource_densities,
+  species_densities)
 }
 \arguments{
 \item{hsr}{half-saturation constants for
@@ -18,11 +19,17 @@ of species (rows) on resources (columns). Can be created by
 
 \item{max_growth_rate}{max growth rate of the focal species}
 
+\item{max_growth_rates}{max growth rate of all species}
+
+\item{mortality_rates}{mortality rates of all species}
+
 \item{n_species}{number of species}
 
 \item{n_resources}{number of resources}
 
 \item{resource_densities}{resource densities}
+
+\item{species_densities}{density of all species}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

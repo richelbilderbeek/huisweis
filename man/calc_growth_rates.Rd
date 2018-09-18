@@ -8,7 +8,13 @@ calc_growth_rates(species_densities, resource_densities, max_growth_rates,
   mortality_rates, hsrs)
 }
 \arguments{
+\item{species_densities}{density of all species}
+
 \item{resource_densities}{resource densities}
+
+\item{max_growth_rates}{max growth rate of all species}
+
+\item{mortality_rates}{mortality rates of all species}
 
 \item{hsrs}{a matrix of half-saturation constants
 of species (rows) on resources (columns). Can be created by

@@ -35,6 +35,7 @@ test_that("use, 2 species, 1 resource", {
   resource_densities <- 23.45
   hsrs <- create_hsrs(n_species = 2, n_resources = 1)
   hsrs[1, 1] <- 34.56
+  hsrs[2, 1] <- 45.67
 
   growth_rate_1 <- calc_specific_growth_rate(
     resource_densities = resource_densities,
