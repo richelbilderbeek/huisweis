@@ -6,6 +6,9 @@
 \usage{
 get_max_growth_rates(n_species)
 }
+\arguments{
+\item{n_species}{number of species}
+}
 \description{
 Get the maximum growth rates of a number of species
 }

@@ -6,6 +6,9 @@
 \usage{
 get_mortality_rates(n_species)
 }
+\arguments{
+\item{n_species}{number of species}
+}
 \description{
 Get the mortality rates for any number of species
 }
