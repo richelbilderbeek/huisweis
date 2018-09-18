@@ -6,6 +6,9 @@
 \usage{
 create_init_spec_densities(n_species)
 }
+\arguments{
+\item{n_species}{number of species}
+}
 \description{
 Create the initial species densities for the species present at time zero
 }

@@ -1,4 +1,5 @@
 #' Create the initial species densities for the species present at time zero
+#' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
 #' @export
 create_init_spec_densities <- function(n_species) {
