@@ -7,8 +7,30 @@
 calc_specific_growth_rate(resource_densities, max_growth_rate,
   half_saturation_resources)
 }
+\arguments{
+\item{resource_densities}{resource densities}
+
+\item{max_growth_rate}{max growth rate of the focal species}
+
+\item{half_saturation_resources}{half-saturation constants for
+this focal species for each of the resources}
+}
+\value{
+the growth rate of the focal species
+}
 \description{
 Calculate the specific growth rates, equation 3
+}
+\examples{
+  max_growth_rate <- 12.34
+  resource_densities <- 23.45
+  half_saturation_resources <- 34.56
+  specific_growth_rate <- calc_specific_growth_rate(
+    resource_densities = resource_densities,
+    max_growth_rate = max_growth_rate,
+    half_saturation_resources = half_saturation_resources
+  )
+  expect_equal(4.988329598, specific_growth_rate)
 }
 \author{
 Richel J.C. Bilderbeek
