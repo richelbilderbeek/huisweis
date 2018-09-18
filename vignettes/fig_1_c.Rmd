@@ -42,8 +42,8 @@ knitr::kable(srcs)
 ```{r}
 supply_rates <- c(6, 10, 15)
 species_densities <- create_init_spec_densities(n_species = n_species)
-max_growth_rates <- rep(1.0, n_species)
+max_growth_rates <- get_max_growth_rates(n_species = n_species)
 #resource_densities,
-mortality_rates <- rep(0.25, n_species)
+mortality_rates <- get_mortality_rates(n_species = n_species)
 #turnover_rate <- 0.25
 ```
