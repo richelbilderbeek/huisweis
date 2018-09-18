@@ -4,10 +4,10 @@ test_that("use", {
 
   n_species <- 1
   n_resources <- 1
-  max_growth_rates <- 12.34
-  resource_densities <- 23.45
+  max_growth_rates <- get_max_growth_rates(n_species = n_species)
+  resource_densities <- 6
   hsrs <- create_hsrs(n_species = n_species, n_resources = n_resources)
-  hsrs[1, 1] <- 34.56
+  hsrs[1, 1] <- 1.2
 
   growth_rate <- calc_specific_growth_rate(
     resource_densities = resource_densities,
@@ -16,8 +16,25 @@ test_that("use", {
   )
 
   srcs <- create_srcs(n_species = 1, n_resources = 1)
-  srcs[1, 1] <- 1.2
+  srcs[1, 1] <- 0.04
   species_densities <- create_init_spec_densities(n_species = n_species)
+  supply_rates <- 6
+  turnover_rate <- get_turnover_rate()
 
   resource_uptake <- srcs[ ,1] * growth_rate * species_densities
+
+  resource_flux <- turnover_rate * (supply_rates[1] - resource_densities[1])
+
+  expected <- resource_flux - resource_uptake
+
+  created <- calc_resource_changes(
+    max_growth_rates = max_growth_rates,
+    resource_densities = resource_densities,
+    hsrs = hsrs,
+    srcs = srcs,
+    species_densities = species_densities,
+    supply_rates = supply_rates,
+    turnover_rate = turnover_rate
+  )
+
 })

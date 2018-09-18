@@ -31,9 +31,10 @@ test_that("use, 1 species, 1 resource", {
 
 test_that("use, 2 species, 1 resource", {
 
-  max_growth_rates <- c(12.34, 23.45)
+  n_species <- 2
+  max_growth_rates <- get_max_growth_rates(n_species = n_species)
   resource_densities <- 23.45
-  hsrs <- create_hsrs(n_species = 2, n_resources = 1)
+  hsrs <- create_hsrs(n_species = n_species, n_resources = 1)
   hsrs[1, 1] <- 34.56
   hsrs[1, 2] <- 45.67
 
@@ -49,7 +50,7 @@ test_that("use, 2 species, 1 resource", {
   )
 
   species_densities <- c(45.56, 56.78)
-  mortality_rates <- c(0.56, 0.67)
+  mortality_rates <- get_mortality_rates(n_species = n_species)
 
   expected_1 <- species_densities[1] * (growth_rate_1 - mortality_rates[1])
   expected_2 <- species_densities[2] * (growth_rate_2 - mortality_rates[2])
