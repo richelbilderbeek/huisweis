@@ -51,3 +51,34 @@ test_that("use, 2 resource", {
   expected <- min(specific_growth_rate_1, specific_growth_rate_2)
   expect_equal(created, expected)
 })
+
+test_that("use, 1 resource", {
+
+  created <- calc_specific_growth_rate(
+    resource_densities = 1.0,
+    max_growth_rate = 3.0,
+    hsr = 4.0
+  )
+  expect_equal(0.6, created)
+})
+
+test_that("use, 1 resource", {
+
+  created <- calc_specific_growth_rate(
+    resource_densities = 2.0,
+    max_growth_rate = 3.0,
+    hsr = 5.0
+  )
+  expect_equal(6.0 / 7.0, created)
+})
+
+test_that("use, 2 resource", {
+
+  created <- calc_specific_growth_rate(
+    resource_densities = c(1.0, 2.0),
+    max_growth_rate = 3.0,
+    hsr = c(4.0, 5.0)
+  )
+
+  expect_equal(0.6, created)
+})
