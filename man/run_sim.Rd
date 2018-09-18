@@ -4,7 +4,26 @@
 \alias{run_sim}
 \title{Run the simulation}
 \usage{
-run_sim(initial_species_densities, initial_resource_densities, dt, t_max)
+run_sim(initial_species_densities, initial_resource_densities, dt, t_max,
+  max_growth_rates, mortality_rates, hsrs, srcs, supply_rates, turnover_rate)
+}
+\arguments{
+\item{initial_species_densities}{the species densities at time zero}
+
+\item{initial_resource_densities}{the resource densities at time zero}
+
+\item{dt}{delta timestep}
+
+\item{t_max}{simulation will run in steps of \code{dt}
+until (not inclusive) this time point is reached}
+
+\item{max_growth_rates}{max growth rate of all species}
+
+\item{mortality_rates}{mortality rates of all species}
+
+\item{hsrs}{a matrix of half-saturation constants
+of species (rows) on resources (columns). Can be created by
+\link{create_hsrs}}
 }
 \value{
 a data frame

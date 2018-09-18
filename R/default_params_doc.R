@@ -1,5 +1,10 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
+#' @param dt delta timestep
+#' @param initial_resource_densities the resource densities at time zero
+#' @param initial_species_densities the species densities at time zero
+#' @param t_max simulation will run in steps of \code{dt}
+#'   until (not inclusive) this time point is reached
 #' @param hsr half-saturation constants for
 #'   a focal species for each of the resources
 #' @param hsrs a matrix of half-saturation constants
@@ -17,15 +22,21 @@
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
 default_params_doc <- function(
+  dt,
   hsr,
   hsrs,
+  initial_resource_densities,
+  initial_species_densities,
   max_growth_rate,
   max_growth_rates,
   mortality_rates,
   n_species,
   n_resources,
   resource_densities,
-  species_densities
+  species_densities,
+  t_max
 ) {
   # Nothing
 }
+
+

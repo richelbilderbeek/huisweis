@@ -1,5 +1,5 @@
 #' Calculate the growth rates of all species
-#' @return the growth rates of all species
+#' @return a numeric vector with the growth rates of all species
 #' @inheritParams default_params_doc
 #' @export
 calc_growth_rates <- function(
@@ -9,6 +9,7 @@ calc_growth_rates <- function(
   mortality_rates,
   hsrs
 ) {
+  testit::assert(!is.list(species_densities))
   n_species <- length(species_densities)
   n_resources <- length(resource_densities)
   testit::assert(n_species == length(max_growth_rates))
@@ -27,6 +28,7 @@ calc_growth_rates <- function(
 
 
   growth_rates <- rep(NA, n_species)
+  testit::assert(!is.list(growth_rates))
   for (i in seq_along(species_densities)) {
     species_density <- species_densities[i]
     max_growth_rate <- max_growth_rates[i]
@@ -36,8 +38,17 @@ calc_growth_rates <- function(
       max_growth_rate = max_growth_rate,
       hsr = hsr
     )
+    testit::assert(!is.list(species_growth_rate))
     mortality_rate <- mortality_rates[i]
+    testit::assert(length(species_density) == 1)
+    testit::assert(length(species_growth_rate) == 1)
+    testit::assert(length(mortality_rate) == 1)
+    testit::assert(!is.list(species_density))
+    testit::assert(!is.list(species_growth_rate))
+    testit::assert(!is.list(mortality_rate))
     growth_rates[i] <- species_density * (species_growth_rate - mortality_rate)
+    testit::assert(!is.list(growth_rates))
   }
+  testit::assert(!is.list(growth_rates))
   growth_rates
 }

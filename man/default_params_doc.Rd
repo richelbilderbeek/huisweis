@@ -5,17 +5,23 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(hsr, hsrs, max_growth_rate, max_growth_rates,
-  mortality_rates, n_species, n_resources, resource_densities,
-  species_densities)
+default_params_doc(dt, hsr, hsrs, initial_resource_densities,
+  initial_species_densities, max_growth_rate, max_growth_rates, mortality_rates,
+  n_species, n_resources, resource_densities, species_densities, t_max)
 }
 \arguments{
+\item{dt}{delta timestep}
+
 \item{hsr}{half-saturation constants for
 a focal species for each of the resources}
 
 \item{hsrs}{a matrix of half-saturation constants
 of species (rows) on resources (columns). Can be created by
 \link{create_hsrs}}
+
+\item{initial_resource_densities}{the resource densities at time zero}
+
+\item{initial_species_densities}{the species densities at time zero}
 
 \item{max_growth_rate}{max growth rate of the focal species}
 
@@ -30,6 +36,9 @@ of species (rows) on resources (columns). Can be created by
 \item{resource_densities}{resource densities}
 
 \item{species_densities}{density of all species}
+
+\item{t_max}{simulation will run in steps of \code{dt}
+until (not inclusive) this time point is reached}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'
