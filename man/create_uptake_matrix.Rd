@@ -8,6 +8,10 @@ create_uptake_matrix(srcs, species_densities, resource_densities,
   max_growth_rates, hsrs, mortality_rates)
 }
 \arguments{
+\item{srcs}{a matrix of species' resource content
+of species (rows) of resources (columns). Can be created by
+\link{create_srcs}}
+
 \item{species_densities}{density of all species}
 
 \item{resource_densities}{resource densities}

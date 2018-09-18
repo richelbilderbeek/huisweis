@@ -21,7 +21,7 @@ of species (rows) on resources (columns). Can be created by
 \link{create_hsrs}}
 }
 \value{
-the growth rates of all species
+a numeric vector with the growth rates of all species
 }
 \description{
 Calculate the growth rates of all species

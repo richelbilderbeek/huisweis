@@ -1,4 +1,5 @@
 #' Calculate the change in resource, equation 2
+#' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
 #' @export
 calc_resource_changes <- function(

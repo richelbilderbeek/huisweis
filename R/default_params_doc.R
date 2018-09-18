@@ -17,6 +17,11 @@
 #' @param n_resources number of resources
 #' @param resource_densities resource densities
 #' @param species_densities density of all species
+#' @param supply_rates the rate at which resources are pumped into the system
+#' @param srcs a matrix of species' resource content
+#'   of species (rows) of resources (columns). Can be created by
+#'   \link{create_srcs}
+#' @param turnover_rate the turnover rate of the whole system
 #' @author Richel J.C. Bilderbeek
 #' @note This is an internal function, so it should be marked with
 #'   \code{@noRd}. This is not done, as this will disallow all
@@ -34,7 +39,10 @@ default_params_doc <- function(
   n_resources,
   resource_densities,
   species_densities,
-  t_max
+  srcs,
+  supply_rates,
+  t_max,
+  turnover_rate
 ) {
   # Nothing
 }

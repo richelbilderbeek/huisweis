@@ -7,6 +7,27 @@
 calc_resource_changes(max_growth_rates, resource_densities, hsrs, srcs,
   species_densities, supply_rates, turnover_rate, mortality_rates)
 }
+\arguments{
+\item{max_growth_rates}{max growth rate of all species}
+
+\item{resource_densities}{resource densities}
+
+\item{hsrs}{a matrix of half-saturation constants
+of species (rows) on resources (columns). Can be created by
+\link{create_hsrs}}
+
+\item{srcs}{a matrix of species' resource content
+of species (rows) of resources (columns). Can be created by
+\link{create_srcs}}
+
+\item{species_densities}{density of all species}
+
+\item{supply_rates}{the rate at which resources are pumped into the system}
+
+\item{turnover_rate}{the turnover rate of the whole system}
+
+\item{mortality_rates}{mortality rates of all species}
+}
 \description{
 Calculate the change in resource, equation 2
 }
