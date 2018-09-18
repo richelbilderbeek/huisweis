@@ -14,7 +14,7 @@
 #'     max_growth_rate = max_growth_rate,
 #'     half_saturation_resources = half_saturation_resources
 #'   )
-#'   expect_equal(4.988329598, specific_growth_rate)
+#'   testthat::expect_equal(4.988329598, specific_growth_rate)
 #' @export
 calc_specific_growth_rate <- function(
   resource_densities,
