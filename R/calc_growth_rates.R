@@ -15,6 +15,15 @@ calc_growth_rates <- function(
   testit::assert(n_species == length(mortality_rates))
   testit::assert(n_resources == ncol(hsrs))
   testit::assert(n_species == nrow(hsrs))
+  if (!all(colnames(hsrs) == paste0("R", seq(1, n_resources)))) {
+    stop("Use 'create_hsrs' to create a tidy HSRs matrix")
+  }
+  if (!all(rownames(hsrs) ==  paste0("N", seq(1, n_species)))) {
+    stop("Use 'create_hsrs' to create a tidy HSRs matrix")
+  }
+
+  testit::assert(all(colnames(hsrs) == paste0("R", seq(1, n_resources))))
+  testit::assert(all(rownames(hsrs) ==  paste0("N", seq(1, n_species))))
 
 
   growth_rates <- rep(NA, n_species)
