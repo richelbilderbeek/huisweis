@@ -5,23 +5,26 @@ test_that("use", {
   n_species <- 1
   n_resources <- 1
   max_growth_rates <- get_max_growth_rates(n_species = n_species)
+  species_densities <- create_init_spec_densities(n_species = n_species)
   resource_densities <- 6
   hsrs <- create_hsrs(n_species = n_species, n_resources = n_resources)
   hsrs[1, 1] <- 1.2
+  mortality_rates <- get_mortality_rates(n_species = n_species)
 
-  growth_rate <- calc_specific_growth_rate(
+  growth_rates <- calc_growth_rates(
+    species_densities = species_densities,
     resource_densities = resource_densities,
-    max_growth_rate = max_growth_rates[1],
-    hsr = hsrs[, ]
+    max_growth_rates = max_growth_rates,
+    mortality_rates = mortality_rates,
+    hsrs = hsrs
   )
 
   srcs <- create_srcs(n_species = 1, n_resources = 1)
   srcs[1, 1] <- 0.04
-  species_densities <- create_init_spec_densities(n_species = n_species)
   supply_rates <- 6
   turnover_rate <- get_turnover_rate()
 
-  resource_uptake <- srcs[ ,1] * growth_rate * species_densities
+  resource_uptake <- srcs[ ,1] * growth_rates * species_densities
 
   resource_flux <- turnover_rate * (supply_rates[1] - resource_densities[1])
 
@@ -34,7 +37,8 @@ test_that("use", {
     srcs = srcs,
     species_densities = species_densities,
     supply_rates = supply_rates,
-    turnover_rate = turnover_rate
+    turnover_rate = turnover_rate,
+    mortality_rates = mortality_rates
   )
-
+  expect_equal(expected, created)
 })
