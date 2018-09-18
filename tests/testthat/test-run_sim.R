@@ -28,7 +28,8 @@ test_that("use", {
     supply_rates = supply_rates,
     turnover_rate = turnover_rate
   )
-  expect_equal(ncol(df), n_species + n_resources)
+  # '1 +' because the time
+  expect_equal(ncol(df), 1 + n_species + n_resources)
   expect_equal(nrow(df), t_max / dt)
 
 })

@@ -39,14 +39,15 @@ run_sim <- function(
 
   n_timesteps <- t_max / dt
 
-  df <- data.frame(matrix(nrow = n_timesteps, ncol = n_species + n_resources))
-  colnames(df) <- c(paste0("N", seq(1, n_species)), paste0("R", seq(1, n_resources)))
+  # '1 +' due to the time
+  df <- data.frame(matrix(nrow = n_timesteps, ncol = 1 + n_species + n_resources))
+  colnames(df) <- c("t", paste0("N", seq(1, n_species)), paste0("R", seq(1, n_resources)))
   rownames(df) <- paste0("t", seq(1, n_timesteps) - 1)
-  df[1, ] <- c(initial_species_densities, initial_resource_densities)
+  df[1, ] <- c(0.0, initial_species_densities, initial_resource_densities)
 
   for (t in seq(2, n_timesteps)) {
-    ns <- as.numeric(df[t - 1, 1:n_species])
-    rs <- as.numeric(df[t - 1, -c(1:n_species)])
+    ns <- as.numeric(df[t - 1, 2:(n_species + 1)])
+    rs <- as.numeric(df[t - 1, -c(1, 2:(n_species + 1))])
     testit::assert(length(ns) == n_species)
     testit::assert(length(rs) == n_resources)
     testit::assert(!is.list(ns))
@@ -70,7 +71,7 @@ run_sim <- function(
       mortality_rates = mortality_rates
     )
     new_rs <- rs + (delta_rs * dt)
-    df[t, ] <- c(new_ns, new_rs)
+    df[t, ] <- c((t - 1) * dt, new_ns, new_rs)
   }
 
   df

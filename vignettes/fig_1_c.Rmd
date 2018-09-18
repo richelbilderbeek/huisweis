@@ -2,7 +2,7 @@
 title: "Figure 1C"
 author: "Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{Figure 1C}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,6 +14,7 @@ Goal of this vignette is to re-create figure 1C.
 # Setup
 
 ```{r}
+library(ggplot2)
 library(huisweis)
 ```
 
@@ -42,30 +43,44 @@ knitr::kable(srcs)
 ```{r}
 supply_rates <- c(6, 10, 15)
 print(supply_rates)
-```
-
-```{r}
-species_densities <- create_init_spec_densities(n_species = n_species)
-print(species_densities)
-```
-
-```{r}
+initial_resource_densities <- supply_rates
+print(initial_resource_densities)
+initial_species_densities <- create_init_spec_densities(n_species = n_species)
+print(initial_species_densities)
 max_growth_rates <- get_max_growth_rates(n_species = n_species)
-print(max_growth_rates)
-```
-
-```{r}
-resource_densities <- supply_rates
-print(resource_densities)
-```
-
-```{r}
 mortality_rates <- get_mortality_rates(n_species = n_species)
 print(mortality_rates)
+turnover_rate <- get_turnover_rate()
+print(turnover_rate)
+t_max <- 10
+print(t_max)
+dt <- 0.01
+print(dt)
 ```
 
 ```{r}
-turnover_rate <- get_turnover_rate()
-print(turnover_rate)
+df <- run_sim(
+  initial_species_densities = initial_species_densities,
+  initial_resource_densities = initial_resource_densities,
+  dt = dt,
+  t_max = t_max,
+  max_growth_rates = max_growth_rates,
+  mortality_rates = mortality_rates,
+  hsrs = hsrs,
+  srcs = srcs,
+  supply_rates = supply_rates,
+  turnover_rate = turnover_rate
+)
+knitr::kable(head(df))
 ```
 
+
+```{r}
+df_long <- reshape2::melt(df, id = "t")
+knitr::kable(head(df_long))
+names(df_long)
+```
+
+```{r}
+ggplot(data = df_long, aes(x = t, y = value, fill = variable)) + geom_line()
+```
