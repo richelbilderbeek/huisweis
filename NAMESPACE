@@ -3,3 +3,4 @@
 export(calc_growth_rates)
 export(calc_specific_growth_rate)
 export(create_hsrs)
+export(create_srcs)
