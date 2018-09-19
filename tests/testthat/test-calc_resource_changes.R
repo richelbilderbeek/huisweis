@@ -42,3 +42,44 @@ test_that("use", {
   )
   expect_equal(expected, created)
 })
+
+test_that("use, 3 species, 3 resurces", {
+
+  n_species <- 3
+  n_resources <- 3
+  max_growth_rates <- get_max_growth_rates(n_species = n_species)
+  species_densities <- create_init_spec_densities(n_species = n_species)
+  supply_rates <- get_supply_rates()
+  resource_densities <- supply_rates
+  hsrs <- create_hsrs_1_a()
+  mortality_rates <- get_mortality_rates(n_species = n_species)
+
+  growth_rates <- calc_growth_rates(
+    species_densities = species_densities,
+    resource_densities = resource_densities,
+    max_growth_rates = max_growth_rates,
+    mortality_rates = mortality_rates,
+    hsrs = hsrs
+  )
+
+  srcs <- create_srcs_1_a()
+  turnover_rate <- get_turnover_rate()
+
+  resource_uptake <- as.numeric(rowSums(srcs * growth_rates * species_densities))
+
+  resource_flux <- turnover_rate * (supply_rates - resource_densities)
+
+  expected <- resource_flux - resource_uptake
+
+  created <- calc_resource_changes(
+    max_growth_rates = max_growth_rates,
+    resource_densities = resource_densities,
+    hsrs = hsrs,
+    srcs = srcs,
+    species_densities = species_densities,
+    supply_rates = supply_rates,
+    turnover_rate = turnover_rate,
+    mortality_rates = mortality_rates
+  )
+  expect_equal(expected, created)
+})
